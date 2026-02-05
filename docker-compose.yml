@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  # Task 1: Mock APIs
+  mock-api:
+    image: mbonigabay/crm-mock-api:v1.0
+    container_name: crm-mock-api
+    ports:
+      - "8080:8080"
+    networks:
+      - integration-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Task 2: Message Broker
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq-broker
+    ports:
+      - "5673:5672"   # AMQP Protocol port
+      - "15673:15672" # Management UI
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - integration-network
+
+  # Task 2: Java Producer
+  producer-app:
+    image: mbonigabay/system-integration-producer:v1
+    container_name: system-integration-producer
+    ports:
+      - "8081:8080"
+    environment:
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_RABBITMQ_USERNAME=guest
+      - SPRING_RABBITMQ_PASSWORD=guest
+      - MOCK_API_BASE_URL=http://mock-api:8080 
+    networks:
+      - integration-network
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      mock-api:
+        condition: service_started
+    
+  # Task 3: Python Consumer
+  consumer-app:
+    image: mbonigabay/system-integration-consumer:latest
+    environment:
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - ANALYTICS_SYSTEM_URL=http://analytics:8082/analytics
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    volumes:
+      - ./analytics_data.csv:/app/analytics_data.csv
+      - ./analytics_customers.csv:/app/analytics_customers.csv
+      - ./analytics_inventory.csv:/app/analytics_inventory.csv
+      - ./system-integration-consumer/consumer.py:/app/consumer.py
+    networks:
+      - integration-network
+
+  dashboard:
+    image: mbonigabay/system-integration-consumer:latest
+    command: python -m http.server 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./analytics_data.csv:/app/analytics_data.csv
+      - ./analytics_customers.csv:/app/analytics_customers.csv
+      - ./analytics_inventory.csv:/app/analytics_inventory.csv
+    networks:
+      - integration-network
+
+
+networks:
+  integration-network:
+    driver: bridge
