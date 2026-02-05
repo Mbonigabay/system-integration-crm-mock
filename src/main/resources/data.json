@@ -1,0 +1,40 @@
+{
+  "crm": {
+    "customers": [
+      { "id": "C-1001", "name": "Global Tech Corp", "email": "contact@globaltech.com", "address": "Kicukiro", "status": "ACTIVE" },
+      { "id": "C-1002", "name": "Innovate Ltd", "email": "info@innovate.io", "address": "Gasabo", "status": "ACTIVE" },
+      { "id": "C-1003", "name": "Alpha Services", "email": "support@alphasvc.com", "address": "Nyarugenge", "status": "INACTIVE" },
+      { "id": "C-1004", "name": "Omega Systems", "email": "contact@omega.com", "address": "Rubavu", "status": "ACTIVE" },
+      { "id": "C-1005", "name": "Zeta Solutions", "email": "hr@zetasol.com", "address": "Musanze", "status": "ACTIVE" },
+      { "id": "C-1006", "name": "Beta Dynamics", "email": "ops@betadyn.com", "address": "Kigali", "status": "ACTIVE" },
+      { "id": "C-1007", "name": "Gamma Research", "email": "lab@gamma.org", "address": "Huye", "status": "ACTIVE" },
+      { "id": "C-1008", "name": "Delta Logistics", "email": "shipping@delta.co", "address": "Bugesera", "status": "ACTIVE" },
+      { "id": "C-1009", "name": "Epsilon Energy", "email": "power@epsilon.rw", "address": "Rwamagana", "status": "ACTIVE" },
+      { "id": "C-1010", "name": "Sigma Consulting", "email": "advice@sigma.com", "address": "Kigali", "status": "ACTIVE" },
+      { "id": "C-1011", "name": "Theta Manufacturing", "email": "factory@theta.rw", "address": "Nyanza", "status": "ACTIVE" },
+      { "id": "C-1012", "name": "Iota Infrastructure", "email": "build@iota.io", "address": "Karongi", "status": "ACTIVE" },
+      { "id": "C-1013", "name": "Kappa Kreatives", "email": "design@kappa.rw", "address": "Rubavu", "status": "ACTIVE" },
+      { "id": "C-1014", "name": "Lambda Labs", "email": "research@lambda.com", "address": "Kigali", "status": "ACTIVE" },
+      { "id": "C-1015", "name": "Mu Media", "email": "press@mu-media.rw", "address": "Musanze", "status": "ACTIVE" },
+      { "id": "C-1016", "name": "Nu Networking", "email": "support@nunet.rw", "address": "Gicumbi", "status": "ACTIVE" },
+      { "id": "C-1017", "name": "Xi X-ray Tech", "email": "med@xi-tech.com", "address": "Kigali", "status": "ACTIVE" },
+      { "id": "C-1018", "name": "Omicron Optics", "email": "glass@omicron.rw", "address": "Kayonza", "status": "ACTIVE" },
+      { "id": "C-1019", "name": "Pi Publishing", "email": "books@pipub.com", "address": "Kigali", "status": "ACTIVE" },
+      { "id": "C-1020", "name": "Rho Robotics", "email": "bots@rho.rw", "address": "Kigali", "status": "ACTIVE" }
+    ]
+  },
+  "inventory": {
+    "products": [
+      { "sku": "PROD-001", "name": "Cloud License Tier 1", "quantity": 500, "price": 1200.00, "category": "Software" },
+      { "sku": "PROD-002", "name": "AI Module Enterprise", "quantity": 15, "price": 5500.00, "category": "Software" },
+      { "sku": "PROD-003", "name": "Smart Sensor V2", "quantity": 300, "price": 120.75, "category": "Hardware" },
+      { "sku": "PROD-004", "name": "Edge Gateway Pro", "quantity": 45, "price": 850.50, "category": "Hardware" },
+      { "sku": "PROD-005", "name": "Enterprise Laptop", "quantity": 50, "price": 1500.0, "category": "Hardware" },
+      { "sku": "PROD-006", "name": "4K Ultra Monitor", "quantity": 120, "price": 450.0, "category": "Hardware" },
+      { "sku": "PROD-007", "name": "Mechanical Keyboard", "quantity": 80, "price": 125.0, "category": "Hardware" },
+      { "sku": "PROD-008", "name": "Wireless Ergonomic Mouse", "quantity": 200, "price": 75.0, "category": "Hardware" },
+      { "sku": "PROD-009", "name": "USB-C Universal Dock", "quantity": 60, "price": 199.99, "category": "Hardware" },
+      { "sku": "PROD-010", "name": "VR Training Headset", "quantity": 10, "price": 2999.0, "category": "Hardware" }
+    ]
+  }
+}
